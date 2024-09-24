@@ -6,6 +6,7 @@ import vertexSource from "./wgslVertex/baseVertex.wgsl";
 
 class PostEffectInvert extends PostEffectBase {
 	constructor(redGPUContext: RedGPUContext) {
+		debugger
 		super(redGPUContext, vertexSource, fragmentSource);
 	}
 

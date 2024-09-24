@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "webpack watch": "webpack  --watch",
+    "webpack-watch": "webpack  --watch",
     "makeTestCase": "node makeTestCase.js",
+    "server": "http-server",
     "makeDoc watch": "typedoc --watch"
   },
   "name": "redgpu",
@@ -11,7 +12,7 @@
   "author": "redcamel",
   "license": "ISC",
   "dependencies": {
-    "@webgpu/types": "~0.1.23"
+    "@webgpu/types": "^0.1.42"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

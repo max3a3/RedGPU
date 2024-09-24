@@ -2,6 +2,7 @@ const path = require('path');
 module.exports = {
 	mode: 'development',
 	entry: './src/RedGPU.ts',
+	devtool: 'source-map', // Add this line for source maps
 	module: {
 		rules: [
 			{

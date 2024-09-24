@@ -1,7 +1,7 @@
 import * as RedGPU from '../../../../dist/RedGPU.mjs'
 import setExampleHelper from "../../../exampleHelper/setExampleHelper.js";
 import testUI from "./testUI.js";
-
+const HAS_EFFECT = 0
 const run = () => {
 	const canvas = document.createElement('canvas')
 	canvas.style.width = '100%'
@@ -19,7 +19,7 @@ const run = () => {
 					// Set Object
 					const testTexture = new RedGPU.BitmapTexture(redGPUContext, '../../../assets/crate.png')
 					const testMat = new RedGPU.BitmapMaterial(redGPUContext, testTexture)
-					let i = 100
+					let i = 5
 					while (i--) {
 						let mesh
 						const size = Math.random() * 10 + 0.5
@@ -33,14 +33,14 @@ const run = () => {
 						mesh.rotationZ = Math.random() * 360
 					}
 				}
+	// Set View
+	const view = new RedGPU.View(redGPUContext, scene)
+	redGPUContext.addView(view)
+				if (HAS_EFFECT) {
 
-				// Set View
-				const view = new RedGPU.View(redGPUContext, scene)
-				redGPUContext.addView(view)
-
-				// Set PostEffect
-				view.postEffectManager.addEffect(new RedGPU.PostEffectInvert(redGPUContext))
-
+	// Set PostEffect
+	view.postEffectManager.addEffect(new RedGPU.PostEffectInvert(redGPUContext))
+}
 				// Set Renderer
 				const renderer = new RedGPU.Renderer(redGPUContext)
 				renderer.beforeRender = (nowTime, targetView, targetScene) => {
@@ -48,6 +48,7 @@ const run = () => {
 					targetView.camera.y = Math.sin(nowTime / 3000) * 25 + Math.sin(nowTime / 2000) * 25
 					targetView.camera.z = Math.sin(nowTime / 3000) * 40
 				}
+
 				renderer.mainRender = (nowTime, targetView, targetScene) => {}
 				renderer.afterRender = (nowTime, targetView) => {}
 				renderer.startRender()
